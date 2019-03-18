@@ -1,0 +1,54 @@
+.navarea {
+  overflow: hidden;
+}
+
+.capsule {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  width: 100vw;
+  height: 60px;
+  background: white;
+}
+
+ul {
+  padding-left: 0;
+  display: flex;
+  list-style: none outside none;
+  justify-content: center;
+  align-items: center;
+}
+
+li {
+  padding: 0 50px;
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: black;
+}
+
+.cartitem {
+  position: relative;
+  float: right;
+}
+
+.cartcount {
+  font-family: 'Barlow', sans-serif;
+  position: absolute;
+  background: #ff2211;
+  color: white;
+  text-align: center;
+  padding-top: 4px;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  margin: -5px 0 0 20px;
+  border-radius: 1000px;
+  font-weight: 700;
+}
