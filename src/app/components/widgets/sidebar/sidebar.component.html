@@ -11,6 +11,7 @@
       [min]="inputmin"
       [max]="inputmax"
       [step]="0.1"
+      (change)="onchange($event)"
     />
     <span class="min">${{ inputmin }}</span>
     <span class="max">${{ inputmax }}</span>
