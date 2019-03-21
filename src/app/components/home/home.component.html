@@ -6,7 +6,10 @@
       [inputmax]="150"
       [priceRange]="150"
     >
-      <app-switch (ontoggled)="ontoggled($event)"></app-switch>
+      <app-switch
+        (ontoggled)="ontoggled($event)"
+        [isChecked]="filter.showOnlySale"
+      ></app-switch>
     </app-sidebar>
     <div class="content" tag="section">
       <app-sale-item
