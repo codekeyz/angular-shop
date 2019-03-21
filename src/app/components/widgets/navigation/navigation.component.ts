@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -8,7 +9,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class NavigationComponent implements OnInit {
   @Input() cartTotal = 0;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  navigate(category: string) {
+    this.router.navigate(['home'], {
+      queryParams: { category }
+    });
+  }
 }

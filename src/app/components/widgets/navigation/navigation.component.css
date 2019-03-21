@@ -31,6 +31,7 @@ a:visited,
 a:active {
   text-decoration: none;
   color: black;
+  cursor: pointer;
 }
 
 .cartitem {

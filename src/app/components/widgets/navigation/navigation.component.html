@@ -25,9 +25,9 @@
         </svg>
       </a>
       <ul>
-        <li><a [routerLink]="['/women']">Women's</a></li>
-        <li><a [routerLink]="['/men']">Men's</a></li>
-        <li><a [routerLink]="['/sale']">Sale</a></li>
+        <li><a (click)="navigate('women')">Women's</a></li>
+        <li><a (click)="navigate('men')">Men's</a></li>
+        <li><a (click)="navigate('sale')">Sale</a></li>
       </ul>
       <a [routerLink]="['/cart']" routerLinkActive="router-link-active">
         <div class="cartitem">
