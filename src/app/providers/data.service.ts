@@ -44,6 +44,16 @@ export class DataService {
     );
   }
 
+  async addToCart(item: SaleItem) {
+    const items: SaleItem[] = this.getCart();
+    items.push(item);
+    await localStorage.setItem('Cart', JSON.stringify(items));
+  }
+
+  getCart(): SaleItem[] {
+    return JSON.parse(localStorage.getItem('Cart') || '[]');
+  }
+
   getProducts(): SaleItem[] {
     return [
       {
