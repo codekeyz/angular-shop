@@ -38,4 +38,8 @@ export class HomeComponent implements OnInit {
     this.filter.highPrize = range;
     this.filter$.next(this.filter);
   }
+
+  onaddtoCart(saleitem: SaleItem) {
+    this.dataSvc.addToCart(saleitem);
+  }
 }

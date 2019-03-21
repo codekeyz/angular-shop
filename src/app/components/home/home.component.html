@@ -11,6 +11,7 @@
     <div class="content" tag="section">
       <app-sale-item
         *ngFor="let item of (productsObservable | async)"
+        (cartAdd)="onaddtoCart($event)"
         [item]="item"
       ></app-sale-item>
     </div>

@@ -3,5 +3,5 @@
   <span class="salepill" *ngIf="item.sale">Sale</span>
   <img [src]="'assets/img/'.concat(item.img)" [alt]="item.name" />
   <p>${{ item.price }}</p>
-  <button class="add">Add Item</button>
+  <button class="add" (click)="addtoCart(item)">Add Item</button>
 </div>
