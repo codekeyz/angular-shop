@@ -24,6 +24,7 @@ export class DataService {
   constructor() {}
 
   getObservaleProducts(sort: Filter) {
+    console.log(sort);
     return of(this.getProducts()).pipe(
       map(products => {
         return !sort
@@ -32,13 +33,16 @@ export class DataService {
               const result_sort = sort.showOnlySale
                 ? sort.showOnlySale === item.sale
                 : true;
-              console.log(result_sort);
 
               const result_prize = sort.highPrize
                 ? sort.highPrize <= item.price
                 : true;
 
-              return result_prize && result_sort;
+              const result_category = sort.category
+                ? sort.category === item.category
+                : true;
+
+              return result_category && result_sort && result_prize;
             });
       })
     );
