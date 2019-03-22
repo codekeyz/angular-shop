@@ -8,7 +8,7 @@
     >
       <app-switch
         (ontoggled)="ontoggled($event)"
-        [isChecked]="filter.showOnlySale"
+        [isChecked]="filter.showOnlySale ? filter.showOnlySale : false"
       ></app-switch>
     </app-sidebar>
     <div class="content" tag="section">

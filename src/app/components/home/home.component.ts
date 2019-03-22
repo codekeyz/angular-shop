@@ -32,8 +32,6 @@ export class HomeComponent implements OnInit {
     );
 
     this.route.queryParams.subscribe(data => {
-      console.log(data.category);
-
       if (data.category === 'sale') {
         this.filter.showOnlySale = true;
         this.filter$.next(this.filter);
