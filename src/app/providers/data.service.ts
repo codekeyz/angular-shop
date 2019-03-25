@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 export class Filter {
@@ -9,12 +9,17 @@ export class Filter {
 }
 
 export class SaleItem {
+  id?: number;
   name?: string;
   sale?: boolean;
   img?: string;
   price?: number;
   category?: string;
   article?: string;
+}
+
+export class CartItem extends SaleItem {
+  count? = 0;
 }
 
 @Injectable({
@@ -24,7 +29,6 @@ export class DataService {
   constructor() {}
 
   getObservaleProducts(sort: Filter) {
-    console.log(sort);
     return of(this.getProducts()).pipe(
       map(products => {
         return !sort
@@ -48,19 +52,32 @@ export class DataService {
     );
   }
 
+  getObservableCart(): Observable<CartItem[]> {
+    return of(this.getCart());
+  }
+
   async addToCart(item: SaleItem) {
     const items: SaleItem[] = this.getCart();
     items.push(item);
     await localStorage.setItem('Cart', JSON.stringify(items));
   }
 
-  getCart(): SaleItem[] {
+  async isinCart(id: number) {
+    const items = this.getCart();
+    const result = await items.map(item => {
+      return item.id === id;
+    });
+    return result.includes(true);
+  }
+
+  getCart(): CartItem[] {
     return JSON.parse(localStorage.getItem('Cart') || '[]');
   }
 
   getProducts(): SaleItem[] {
     return [
       {
+        id: 1,
         name: 'Khaki Suede Polish Work Boots',
         price: 149.99,
         category: 'women',
@@ -69,6 +86,7 @@ export class DataService {
         img: 'shoe1.png'
       },
       {
+        id: 2,
         name: 'Camo Fang Backpack Jungle',
         price: 39.99,
         category: 'women',
@@ -77,6 +95,7 @@ export class DataService {
         img: 'jacket1.png'
       },
       {
+        id: 3,
         name: 'Parka and Quilted Liner Jacket',
         price: 49.99,
         category: 'men',
@@ -85,6 +104,7 @@ export class DataService {
         img: 'jacket2.png'
       },
       {
+        id: 4,
         name: 'Cotton Black Cap',
         price: 12.99,
         category: 'men',
@@ -93,6 +113,7 @@ export class DataService {
         img: 'hat1.png'
       },
       {
+        id: 5,
         name: 'Knit Sweater with Zips',
         price: 29.99,
         category: 'women',
@@ -101,6 +122,7 @@ export class DataService {
         img: 'sweater1.png'
       },
       {
+        id: 6,
         name: 'Long Linen-blend Shirt',
         price: 18.99,
         category: 'men',
@@ -109,6 +131,7 @@ export class DataService {
         img: 'shirt1.png'
       },
       {
+        id: 7,
         name: 'Knit Orange Sweater',
         price: 28.99,
         category: 'men',
@@ -117,6 +140,7 @@ export class DataService {
         img: 'sweater2.png'
       },
       {
+        id: 8,
         name: 'Cotton Band-collar Blouse',
         price: 49.99,
         category: 'men',
@@ -125,6 +149,7 @@ export class DataService {
         img: 'shirt2.png'
       },
       {
+        id: 9,
         name: 'Camo Fang Backpack Jungle',
         price: 59.99,
         category: 'women',
@@ -133,6 +158,7 @@ export class DataService {
         img: 'jacket3.png'
       },
       {
+        id: 10,
         name: 'Golden Pilot Jacket',
         price: 129.99,
         category: 'women',
@@ -141,6 +167,7 @@ export class DataService {
         img: 'jacket4.png'
       },
       {
+        id: 11,
         name: 'Spotted Patterned Sweater',
         price: 80.99,
         category: 'women',
@@ -149,6 +176,7 @@ export class DataService {
         img: 'sweater4.png'
       },
       {
+        id: 12,
         name: 'Double Knit Sweater',
         price: 59.99,
         category: 'men',

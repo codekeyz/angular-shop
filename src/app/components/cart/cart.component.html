@@ -1,0 +1,23 @@
+<div class="capsule cart">
+  <div>
+    <h1>Cart</h1>
+    <div class="cartitems" *ngFor="let item of (cartItems$ | async)">
+      <div class="carttext">
+        <h4>{{ item.name }}</h4>
+        <p>{{ item.price }} x {{ item.count || 1 }}</p>
+        <p>
+          Total for this item:
+          <strong>${{ item.price * (item.count || 1) }}</strong>
+        </p>
+      </div>
+      <img
+        class="cartimg"
+        [src]="'assets/img/'.concat(item.img)"
+        [alt]="item.name"
+      />
+    </div>
+    <div class="total">
+      <h3>Total: ${{ cartTotal | number }}</h3>
+    </div>
+  </div>
+</div>
